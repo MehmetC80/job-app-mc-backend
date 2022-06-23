@@ -1,9 +1,16 @@
 import express from 'express';
 import cors from 'cors';
+import dotenv from 'dotenv';
+
+dotenv.config();
+
+const baseUrl = process.env.BASE_URL;
+const mode = process.env.MODE;
+const port = process.env.PORT;
 
 const app = express();
 
-const port = 4711;
+const url = mode === 'development' ? `${baseUrl}:${port}` : baseUrl;
 
 app.use(cors());
 
